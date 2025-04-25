@@ -1,0 +1,158 @@
+/* 
+ * Estilos específicos para a página de usuários
+ * Sistema de Bolão 
+ */
+
+/**
+ * Estilos específicos para a página de gerenciamento de usuários
+ */
+
+/* Ajuste do conteúdo principal para evitar sobreposição com o menu lateral */
+.content {
+    position: relative;
+    min-height: calc(100vh - 56px);
+    padding: 1.5rem;
+    margin-left: 250px; /* Ajuste para o espaço do menu lateral */
+    background-color: #f8f9fc;
+    overflow-x: hidden;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+}
+
+/* Estilos para os cards de estatísticas */
+.dashboard-stats {
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card-body {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+.stat-card-icon {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 0.35rem;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card-content {
+    flex: 1;
+}
+
+.stat-card-title {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.stat-card-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+/* Cores para os cards de estatísticas */
+.stat-card.primary {
+    background-color: #4e73df;
+    border-left: 0.25rem solid #224abe;
+}
+
+.stat-card.success {
+    background-color: #1cc88a;
+    border-left: 0.25rem solid #13855c;
+}
+
+.stat-card.info {
+    background-color: #36b9cc;
+    border-left: 0.25rem solid #258391;
+}
+
+.stat-card.warning {
+    background-color: #f6c23e;
+    border-left: 0.25rem solid #d4a636;
+}
+
+.stat-card.danger {
+    background-color: #e74a3b;
+    border-left: 0.25rem solid #be3629;
+}
+
+/* Estilos para a tabela de usuários */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    vertical-align: middle;
+}
+
+/* Ajuste para os botões de ação */
+.btn-group {
+    white-space: nowrap;
+}
+
+/* Estilos para tabelas */
+.table th {
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.dataTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dataTable th,
+.dataTable td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+.dataTable thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.dataTable tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Botões de ação */
+.btn-group .btn {
+    margin-right: 0.25rem;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+} 

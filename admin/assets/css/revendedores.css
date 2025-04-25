@@ -1,0 +1,190 @@
+/* 
+ * Estilos específicos para a página de revendedores
+ * Sistema de Bolão 
+ */
+
+/* Estilos para a página de gerenciamento de revendedores */
+
+/* Conteúdo principal */
+.content {
+    margin-left: 250px; /* Ajuste de acordo com a largura do menu lateral */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    min-height: calc(100vh - 60px); /* Altura total menos altura do header */
+    background-color: #f8f9fa;
+}
+
+/* Responsividade para o conteúdo principal */
+@media (max-width: 992px) {
+    .content {
+        margin-left: 0;
+    }
+}
+
+.content-header {
+    margin-bottom: 20px;
+}
+
+/* Cards de estatísticas */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-card-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.stat-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.stat-card-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.stat-card-description {
+    font-size: 0.875rem;
+    margin: 0;
+    color: #6c757d;
+}
+
+/* Variantes de cores para os cards */
+.stat-card.primary {
+    border-left: 4px solid #0d6efd;
+}
+
+.stat-card.primary .stat-card-icon {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+}
+
+.stat-card.success {
+    border-left: 4px solid #198754;
+}
+
+.stat-card.success .stat-card-icon {
+    background-color: rgba(25, 135, 84, 0.1);
+    color: #198754;
+}
+
+.stat-card.warning {
+    border-left: 4px solid #ffc107;
+}
+
+.stat-card.warning .stat-card-icon {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.stat-card.info {
+    border-left: 4px solid #0dcaf0;
+}
+
+.stat-card.info .stat-card-icon {
+    background-color: rgba(13, 202, 240, 0.1);
+    color: #0dcaf0;
+}
+
+/* Estatísticas na modal */
+.stats-container {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+.stat-value {
+    font-weight: 600;
+}
+
+/* Tabelas */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Botões e ações */
+.btn-group .btn {
+    margin-right: 5px;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+
+/* Media queries adicionais */
+@media (max-width: 576px) {
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .card-actions {
+        margin-top: 10px;
+        width: 100%;
+    }
+} 

@@ -1,0 +1,122 @@
+/* Estilos para a página de Log de Atividades */
+
+.content {
+    padding: 20px;
+    margin-left: 250px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+    }
+}
+
+/* Estilo para o card de filtros */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    border: none;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+    padding: 15px 20px;
+}
+
+/* Estilização da tabela de logs */
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    border-top: none;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Badges para tipos de atividades */
+.badge {
+    padding: 6px 10px;
+    font-weight: 500;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+/* Estilo para formulário de filtros */
+.form-control {
+    border-radius: 4px;
+    padding: 8px 12px;
+    border: 1px solid #e2e5ec;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: 500;
+}
+
+/* Estilo para as datas no flatpickr */
+.flatpickr-input {
+    background-color: #fff;
+}
+
+/* Estilo para paginação */
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link {
+    color: #007bff;
+    border: 1px solid #dee2e6;
+    margin: 0 2px;
+    border-radius: 4px;
+}
+
+.page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.page-link:hover {
+    color: #0056b3;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+/* Estilo para mensagem de nenhum registro */
+.alert-info {
+    background-color: #e8f4fd;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+/* Responsividade da tabela */
+@media (max-width: 992px) {
+    .table-responsive {
+        border: none;
+    }
+}
+
+/* Animação para carregamento */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+} 

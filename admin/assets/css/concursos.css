@@ -1,0 +1,211 @@
+/**
+ * Estilos específicos para a página de Concursos
+ */
+
+/* Estatísticas */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 2rem;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: #0d6efd;
+}
+
+.stat-card.primary .stat-card-header {
+    background-color: #0d6efd;
+}
+
+.stat-card.success .stat-card-header {
+    background-color: #198754;
+}
+
+.stat-card.info .stat-card-header {
+    background-color: #0dcaf0;
+}
+
+.stat-card.warning .stat-card-header {
+    background-color: #ffc107;
+}
+
+.stat-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.stat-card-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.stat-card-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stat-card-desc {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin: 0;
+}
+
+/* Próximo Concurso em Destaque */
+.featured-contest {
+    margin-bottom: 2rem;
+}
+
+.countdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(13, 110, 253, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    height: 100%;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    min-width: 60px;
+}
+
+.countdown-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0d6efd;
+}
+
+.countdown-label {
+    font-size: 0.75rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.25rem;
+}
+
+/* Lista de Concursos Ativos */
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-text {
+    min-height: 3rem;
+}
+
+/* Modal de Detalhes */
+#detalhes-concurso .concurso-header {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#detalhes-concurso .concurso-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+#detalhes-concurso .concurso-subtitle {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.premio-detalhe {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.premio-detalhe-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.premio-detalhe-valor {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #198754;
+}
+
+.premio-detalhe-desc {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 767.98px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .stat-card-value {
+        font-size: 1.25rem;
+    }
+    
+    .countdown-item {
+        min-width: 40px;
+    }
+    
+    .countdown-value {
+        font-size: 1.25rem;
+    }
+} 

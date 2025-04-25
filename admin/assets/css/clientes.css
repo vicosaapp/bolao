@@ -1,0 +1,81 @@
+/* 
+ * Estilos específicos para a página de clientes
+ * Correção para problemas de layout com o menu lateral
+ */
+
+.content {
+    position: relative;
+    z-index: 1; /* Garantir que o conteúdo fique acima do menu em dispositivos móveis */
+    margin-left: 0; /* Remover margem padrão que pode estar causando sobreposição */
+    width: 100%;
+    padding: 20px;
+}
+
+/* Corrigir o posicionamento do conteúdo principal em relação ao menu lateral */
+@media (min-width: 992px) {
+    .main-content {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+        transition: margin var(--transition-speed) ease, width var(--transition-speed) ease;
+    }
+
+    .main-content.expanded {
+        margin-left: var(--sidebar-width-collapsed);
+        width: calc(100% - var(--sidebar-width-collapsed));
+    }
+}
+
+/* Ajustes específicos para dashboard-stats na página de clientes */
+.dashboard-stats {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 20px;
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 991px) {
+    .content {
+        padding: 15px;
+    }
+    
+    .dashboard-stats {
+        flex-wrap: wrap;
+    }
+    
+    .stat-card {
+        flex: 0 0 calc(50% - 10px);
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .stat-card {
+        flex: 0 0 100%;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    
+    .card-actions {
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+
+/* Correção para tabela responsiva */
+.table-responsive {
+    overflow-x: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilos para modais, garantindo que fiquem acima de tudo */
+.modal {
+    z-index: 1060;
+}
+
+.modal-backdrop {
+    z-index: 1050;
+} 
