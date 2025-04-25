@@ -284,6 +284,150 @@ class ClienteModel {
     }
 
     /**
+     * Listar clientes por vendedor
+     * @param int $vendedor_id ID do vendedor
+     * @param array $filtros Filtros opcionais para a busca
+     * @return array Lista de clientes
+     */
+    public function listarClientesPorVendedor($vendedor_id, $filtros = []) {
+        try {
+            // Garantir que a tabela existe
+            $this->criarTabelaSeNaoExistir();
+            
+            // Verificar se a coluna vendedor_id existe
+            $this->adicionarColunaVendedorSeNaoExistir();
+            
+            $clientes = [];
+            $params = [];
+            $types = '';
+            
+            // Construir query base
+            $query = "SELECT c.* FROM clientes c
+                      LEFT JOIN bilhetes b ON c.id = b.apostador_id
+                      WHERE b.vendedor_id = ? GROUP BY c.id";
+            
+            $params[] = $vendedor_id;
+            $types .= 'i';
+            
+            // Adicionar filtros
+            if (!empty($filtros['status'])) {
+                $query .= " AND c.status = ?";
+                $params[] = $filtros['status'];
+                $types .= 's';
+            }
+            
+            if (!empty($filtros['busca'])) {
+                $query .= " AND (c.nome LIKE ? OR c.codigo LIKE ? OR c.cpf_cnpj LIKE ? OR c.email LIKE ?)";
+                $busca = "%" . $filtros['busca'] . "%";
+                $params[] = $busca;
+                $params[] = $busca;
+                $params[] = $busca;
+                $params[] = $busca;
+                $types .= 'ssss';
+            }
+            
+            // Adicionar ordenação
+            $query .= " ORDER BY c.nome ASC";
+            
+            // Adicionar limite e offset
+            if (isset($filtros['limite'])) {
+                $query .= " LIMIT ?";
+                $params[] = $filtros['limite'];
+                $types .= 'i';
+                
+                if (isset($filtros['offset'])) {
+                    $query .= " OFFSET ?";
+                    $params[] = $filtros['offset'];
+                    $types .= 'i';
+                }
+            }
+            
+            $stmt = $this->database->executeQuery($query, $params, $types);
+            $result = $stmt->get_result();
+            
+            while ($row = $result->fetch_assoc()) {
+                $clientes[] = $row;
+            }
+            
+            return $clientes;
+        } catch (Exception $e) {
+            error_log("Erro ao listar clientes por vendedor: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Contar total de clientes por vendedor
+     * @param int $vendedor_id ID do vendedor
+     * @param array $filtros Filtros opcionais para a contagem
+     * @return int Número total de clientes
+     */
+    public function contarClientesPorVendedor($vendedor_id, $filtros = []) {
+        try {
+            // Garantir que a tabela existe
+            $this->criarTabelaSeNaoExistir();
+            
+            // Verificar se a coluna vendedor_id existe
+            $this->adicionarColunaVendedorSeNaoExistir();
+            
+            $params = [];
+            $types = '';
+            
+            // Construir query base
+            $query = "SELECT COUNT(DISTINCT c.id) as total FROM clientes c
+                      LEFT JOIN bilhetes b ON c.id = b.apostador_id
+                      WHERE b.vendedor_id = ?";
+            
+            $params[] = $vendedor_id;
+            $types .= 'i';
+            
+            // Adicionar filtros
+            if (!empty($filtros['status'])) {
+                $query .= " AND c.status = ?";
+                $params[] = $filtros['status'];
+                $types .= 's';
+            }
+            
+            if (!empty($filtros['busca'])) {
+                $query .= " AND (c.nome LIKE ? OR c.codigo LIKE ? OR c.cpf_cnpj LIKE ? OR c.email LIKE ?)";
+                $busca = "%" . $filtros['busca'] . "%";
+                $params[] = $busca;
+                $params[] = $busca;
+                $params[] = $busca;
+                $params[] = $busca;
+                $types .= 'ssss';
+            }
+            
+            $stmt = $this->database->executeQuery($query, $params, $types);
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            
+            return $row['total'] ?? 0;
+        } catch (Exception $e) {
+            error_log("Erro ao contar clientes por vendedor: " . $e->getMessage());
+            return 0;
+        }
+    }
+    
+    /**
+     * Verificar e adicionar coluna vendedor_id se não existir
+     */
+    private function adicionarColunaVendedorSeNaoExistir() {
+        try {
+            // Verificar se a coluna já existe
+            $result = $this->conn->query("SHOW COLUMNS FROM clientes LIKE 'vendedor_id'");
+            if ($result->num_rows == 0) {
+                // A coluna não existe, então adicioná-la
+                $this->conn->query("ALTER TABLE clientes ADD COLUMN vendedor_id INT AFTER id");
+            }
+            return true;
+        } catch (Exception $e) {
+            error_log("Erro ao verificar/adicionar coluna vendedor_id: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
      * Gerar código único para cliente
      * @return string Código gerado
      */
